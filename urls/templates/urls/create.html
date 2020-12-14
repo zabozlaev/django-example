@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>shortener</title>
+    </head>
+    <body>
+        {% if created_url %}
+            <h1> Created url </h1>
+            <br>
+            ShortLink: <a href="{{ request.scheme }}://{{ request.get_host }}/{{ created_url.short_url }}" >{{ request.scheme }}://{{ request.get_host }}/{{ created_url.short_url }}</a>
+            <br>
+            OriginalLink: <a href="{{ created_url.source_url }}">{{ created_url.source_url }}</a>
+        {% endif %}
+        {% if form %}
+            <form method="post">
+              {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="submit" />
+            </form>
+        {% endif %}
+    </body>
+</html>
